@@ -1,0 +1,154 @@
+:root {
+    --bg: #181a20;
+    --surface: #23262f;
+    --accent: #00e1ff;
+    --text: #eaeaea;
+    --text-muted: #b0b0b0;
+    --section-gap: 2.5rem;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', Arial, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 700px;
+    margin: 40px auto;
+    background: var(--surface);
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+    padding: 2.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin-bottom: 2.5rem;
+    border-bottom: 1px solid #22242a;
+    padding-bottom: 1.5rem;
+    transition: box-shadow 0.3s, background 0.3s;
+    background: transparent; /* Standard: durchsichtig */
+}
+
+header.scrolled {
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+}
+
+.bot-logo {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #22242a;
+    object-fit: contain;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    transition: transform 0.3s;
+}
+.bot-logo:hover {
+    transform: scale(1.08) rotate(-6deg);
+}
+
+h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.policy-section {
+    margin-bottom: var(--section-gap);
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
+    background: rgba(255,255,255,0.01);
+    border-radius: 12px;
+    padding: 1.2rem 1rem;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.08);
+}
+
+.policy-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.policy-section a {
+    color: #8a7f7f;                /* dezentes Grau, passe ggf. an */
+    text-decoration: underline; /* oder 'none', wenn du keinen Unterstrich willst */
+    font-weight: normal;        /* normal oder 500, je nach Wunsch */
+    transition: color 0.2s;
+}
+.policy-section a:hover {
+    color: #0078d4;             /* z.B. ein dezentes Blau beim Hover */
+    text-decoration: underline;
+}
+
+h2 {
+    color: var(--accent);
+    font-size: 1.3rem;
+    margin-top: 0;
+    margin-bottom: 0.7rem;
+    font-weight: 600;
+}
+
+ul {
+    padding-left: 1.2rem;
+    margin: 0.5rem 0 0 0;
+}
+
+li {
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+    font-size: 1rem;
+}
+
+p {
+    color: var(--text);
+    line-height: 1.7;
+    margin: 0.5rem 0 0 0;
+    font-size: 1.05rem;
+}
+
+#scrollToTopBtn {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    z-index: 100;
+    background: #0078d4;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    font-size: 2rem;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+#scrollToTopBtn.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 1.2rem 0.5rem;
+    }
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.7rem;
+    }
+    .bot-logo {
+        width: 44px;
+        height: 44px;
+    }
+}
